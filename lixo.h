@@ -1,0 +1,19 @@
+/* 65c816.h */
+
+#define AL		A.B.l
+#define AH		A.B.h
+#define XL		X.B.l
+#define XH		X.B.h
+#define YL		Y.B.l
+#define YH		Y.B.h
+#define SL		S.B.l
+#define SH		S.B.h
+#define DL		D.B.l
+#define DH		D.B.h
+#define PL		P.B.l
+#define PH		P.B.h
+#define PBPC	PC.xPBPC
+#define PCw		PC.W.xPC
+#define PCh		PC.B.xPCh
+#define PCl		PC.B.xPCl
+#define PB		PC.B.xPB

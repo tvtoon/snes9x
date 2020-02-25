@@ -1,0 +1,25 @@
+# en.utf-8
+
+Unify many "REGISTER_*" functions inside "ppu.*".
+^The "*_tile" and "*_linear" variants are used only in "dma.cpp".
+
+Functionalized macros taken from: ppu.h.
+Transformation into source: getset.h.
+
+# CPU.
+
+Arguments 2 and 5 are according to the function type: index 0, 1, emulation flag.
+Arguments 3 and 4 are always the same.
+Relative and RelativeSlow functions are only used for branching.
+Endings: E0 is without emulation flag, E1 is with.
+^The main difference are within S9xOpcodesE1 and S9xOpcodesSlow, for "Slow" types that always do bad checkups inside.
+
+## Information.
+
+### Status Register (P).
+
+The processor status register changes how the 65C816 handles registers, including itself. The mark is the emulation flag, second byte, less significant bit from this register (0x100). It operates like the 6502, but without undocumented opcodes.
+
+Without the emulation flag set, the index and memory flags can be used to switch registers and operations to 8 bit mode, the bits 4 and 5 respectively.
+^The index flag switches registers X and Y, upper bits are always 0.
+^The memory flag switches register A (accumulator), upper bits are unchanged and cabe accessed via XBA. It also changes any opcode that do not use A, X, or Y as operands to 8bit mode.
